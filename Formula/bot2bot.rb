@@ -21,7 +21,7 @@ class Bot2bot < Formula
         cp "#{libexec}/b2b.mjs" "$tool"
         chmod 755 "$tool"
       fi
-      exec "#{Formula["node"].opt_bin}/node" "$tool" "$@"
+      exec "#{formula_opt_bin("node")}/node" "$tool" "$@"
     SH
   end
 
@@ -34,7 +34,7 @@ class Bot2bot < Formula
   end
 
   test do
-    assert_equal version.to_s, shell_output("#{Formula["node"].opt_bin}/node #{libexec}/b2b.mjs version").strip
+    assert_equal version.to_s, shell_output("#{formula_opt_bin("node")}/node #{libexec}/b2b.mjs version").strip
     assert_equal version.to_s, shell_output("#{bin}/bot2bot version").strip
     assert_path_exists testpath/"bin/b2b.mjs"
   end
